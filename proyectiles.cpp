@@ -48,6 +48,11 @@ void proyectiles::onTimer(){
         }
         jugada=false;
     }
+    for(int i = cajas.size()-1; i >= 0; i--){
+        if(cajas[i].getVida() <= 0){
+            cajas.erase(cajas.begin() + i);
+        }
+    }
     update();
 }
 
@@ -64,7 +69,10 @@ void proyectiles::paintEvent(QPaintEvent* event){
     pelota.dibujar(painter);
     for(int i = 0; i < cajas.size(); i++){
         cajas[i].dibujar(painter);
-    }
+        painter.setPen(Qt::white);
+        painter.setFont(QFont("Arial", 12, QFont::Bold));
+        painter.drawText(cajas[i].getx(), cajas[i].gety(), cajas[i].getancho(), cajas[i].getalto(),Qt::AlignCenter,QString::number(cajas[i].getVida()));
+}
 }
 
 

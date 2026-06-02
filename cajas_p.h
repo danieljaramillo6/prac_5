@@ -10,6 +10,7 @@ public:
     cajas_p();
     cajas_p(int x,int y,int alto,int ancho,int vida);
     void dañar(int daño);
+    int getVida();
 };
 
 #endif // CAJAS_P_H

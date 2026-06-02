@@ -39,12 +39,12 @@ public:
     void setpos(int x,int y);
 
     //parte 2
-    void mover2(int ancho,int alto,QVector<cajas_p> cajas);
+    void mover2(int ancho,int alto,QVector<cajas_p>& cajas);
     int calculardaño();
-    bool colisionarcajader2(QVector<cajas_p> cajas);
-    bool colisionarcajaup2(QVector<cajas_p> cajas);
-    bool colisionarcajadw2(QVector<cajas_p> cajas);
-    bool colisionarcajaiz2(QVector<cajas_p> cajas);
+    bool colisionarcajader2(QVector<cajas_p>& cajas);
+    bool colisionarcajaup2(QVector<cajas_p>& cajas);
+    bool colisionarcajadw2(QVector<cajas_p>& cajas);
+    bool colisionarcajaiz2(QVector<cajas_p>& cajas);
     void setVelx(float v){ velx = v; }
     void setVely(float v){ vely = v; }
 };
