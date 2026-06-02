@@ -7,6 +7,7 @@ proyectiles::proyectiles(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->botonsalir,&QPushButton::clicked,this,&proyectiles::botonvolver);
+
 }
 
 proyectiles::~proyectiles()
@@ -16,5 +17,13 @@ proyectiles::~proyectiles()
 
 void proyectiles::botonvolver(){
     emit volver();
+}
+
+void proyectiles::agregarcaja(int x, int y, int ancho, int alto){
+    cajas.push_back(cajas_c(x,y,ancho,alto));
+}
+
+void proyectiles::agregarPelota(int x, int y, int velx, int vely, int rad){
+    pelotas.push_back(Pelota(x,y,velx,vely,rad));
 }
 

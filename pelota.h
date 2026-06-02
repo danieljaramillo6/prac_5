@@ -13,6 +13,7 @@ private:
     float vely;
     int rad;
     bool viva;
+    int reb;
 public:
     Pelota();
     Pelota(int x,int y,float velx,float vely,int rad,int masa);

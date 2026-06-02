@@ -10,6 +10,7 @@ Pelota::Pelota(int x, int y, float velx, float vely, int rad,int masa){
     this->vely=vely;
     this->rad=rad;
     this->masa=masa;
+    reb=0;
     viva=true;
     qDebug() << "Pelota creada - velx:" << velx << "vely:" << vely;
 }
@@ -167,5 +168,6 @@ int Pelota::calculardaño(){
 
 void Pelota::mover2(int ancho, int alto, QVector<cajas_c> cajas){
     vely=vely-*2;
-
+    x+=velx;
+    y+=vely;
 }
