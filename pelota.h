@@ -3,6 +3,7 @@
 #include <Qpainter>
 #include <QVector>
 #include "cajas_c.h"
+#include "cajas_p.h"
 class Pelota
 {
 private:
@@ -35,10 +36,17 @@ public:
     float getvely();
     bool getviva();
     void muerta();
+    void setpos(int x,int y);
 
     //parte 2
-    void mover2(int ancho,int alto,QVector<cajas_c> cajas);
+    void mover2(int ancho,int alto,QVector<cajas_p> cajas);
     int calculardaño();
+    bool colisionarcajader2(QVector<cajas_p> cajas);
+    bool colisionarcajaup2(QVector<cajas_p> cajas);
+    bool colisionarcajadw2(QVector<cajas_p> cajas);
+    bool colisionarcajaiz2(QVector<cajas_p> cajas);
+    void setVelx(float v){ velx = v; }
+    void setVely(float v){ vely = v; }
 };
 
 #endif // PELOTA_H

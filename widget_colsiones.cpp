@@ -22,7 +22,7 @@ widget_colsiones::widget_colsiones(QWidget *parent)
 }
 
 void widget_colsiones::agregarPelota(int x, int y, int velx, int vely,int rad){
-    pelotas.push_back(Pelota(x,y,velx,vely,rad));
+    pelotas.push_back(Pelota(x,y,velx,vely,rad,0));
 }
 
 void widget_colsiones::agregarcaja(int x, int y, int ancho, int alto){
@@ -67,7 +67,7 @@ void widget_colsiones::detectarcolision(){
                 float r  = sqrt(m1 + m2);
                 pelotas[i].muerta();
                 pelotas[j].muerta();
-                pelotas.append(Pelota(x, y, vx, vy, r));
+                pelotas.append(Pelota(x, y, vx, vy, r,0));
             }
         }
     }

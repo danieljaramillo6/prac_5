@@ -6,7 +6,7 @@ cajas_p::cajas_p(int x, int y, int alto, int ancho, int vida):cajas_c(x,y,ancho,
     this->vida=vida;
 }
 
-void cajas_p::dañar(float daño){
+void cajas_p::dañar(int daño){
     vida=-daño;
 }
 
