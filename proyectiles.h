@@ -4,7 +4,7 @@
 #include "pelota.h"
 #include <QTimer>
 #include <QMouseEvent>
-
+#include "jugador.h"
 #include <QWidget>
 
 namespace Ui {
@@ -30,6 +30,10 @@ private slots:
     void onTimer();
     void botonvolver();
 
+    void on_horizontalSlider_actionTriggered(int action);
+
+    void on_horizontalSlider_valueChanged(int value);
+
 private:
     Ui::proyectiles* ui;
     QTimer *timer;
@@ -37,6 +41,11 @@ private:
     Pelota pelota;
     bool jugada;
     bool jugador;
+    int potencia;
+    Jugador jug1;
+    Jugador jug2;
+    bool juego_terminado;
+    int ganador;
 };
 
 #endif // PROYECTILES_H

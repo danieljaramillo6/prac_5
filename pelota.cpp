@@ -37,10 +37,13 @@ void Pelota::mover(int ancho, int alto, QVector<cajas_c> cajas){
     if(choque_lat && choque_vert){
         x=px;
         y=py;
-    }if(choque_lat){
+
+    }else if(choque_lat){
         velx = -velx * e;
+
     } else if(choque_vert){
         vely = -vely * e;
+
     }
 
 //COLISION PAREDES:
@@ -189,10 +192,13 @@ void Pelota::mover2(int ancho, int alto, QVector<cajas_p>& cajas){
     if(choque_lat && choque_vert){
         x=px;
         y=py;
-    }if(choque_lat){
+        muerta();
+    }else if(choque_lat){
         velx = -velx * e;
+        muerta();
     } else if(choque_vert){
         vely = -vely * e;
+        muerta();
     }
 
     //COLISION PAREDES:
@@ -221,9 +227,6 @@ void Pelota::mover2(int ancho, int alto, QVector<cajas_p>& cajas){
     if (reb==3){
         muerta();
         reb=0;
-    }
-    else{
-        viva=true;
     }
 }
 
@@ -269,4 +272,8 @@ bool Pelota::colisionarcajadw2(QVector<cajas_p>& cajas){
         }
     }
     return false;
+}
+
+void Pelota::revivir(){
+    viva=true;
 }

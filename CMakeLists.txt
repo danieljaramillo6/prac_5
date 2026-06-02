@@ -30,6 +30,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         widget_colsiones.h widget_colsiones.cpp
         cajas_c.h cajas_c.cpp
         cajas_p.h cajas_p.cpp
+        jugador.h jugador.cpp
 
     )
 # Define target properties for Android with Qt 6 as:

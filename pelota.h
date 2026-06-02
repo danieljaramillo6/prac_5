@@ -47,6 +47,7 @@ public:
     bool colisionarcajaiz2(QVector<cajas_p>& cajas);
     void setVelx(float v){ velx = v; }
     void setVely(float v){ vely = v; }
+    void revivir();
 };
 
 #endif // PELOTA_H
