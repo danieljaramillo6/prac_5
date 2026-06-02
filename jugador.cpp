@@ -19,9 +19,10 @@ Jugador::Jugador(int x, int y, int ancho, int alto, int numero){
 
 bool Jugador::colisiona(float px, float py, float rad){
     if(!vivo) return false;
-    return px + rad > x && px - rad < x + ancho && py + rad > y && py - rad < y + alto;
+    bool toca = px + rad > x && px - rad < x + ancho && py + rad > y && py - rad < y + alto;
+    bool dentro = px > x && px < x + ancho && py > y && py < y + alto;
+    return toca || dentro;
 }
-
 void Jugador::dibujar(QPainter& painter){
     if(!vivo) return;
     painter.setBrush(numero == 1 ? Qt::blue : Qt::red);

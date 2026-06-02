@@ -193,12 +193,15 @@ void Pelota::mover2(int ancho, int alto, QVector<cajas_p>& cajas){
         x=px;
         y=py;
         muerta();
+        reb=0;
     }else if(choque_lat){
         velx = -velx * e;
         muerta();
+        reb=0;
     } else if(choque_vert){
         vely = -vely * e;
         muerta();
+        reb=0;
     }
 
     //COLISION PAREDES:
@@ -232,7 +235,7 @@ void Pelota::mover2(int ancho, int alto, QVector<cajas_p>& cajas){
 
 bool Pelota::colisionarcajader2(QVector<cajas_p>& cajas){
     for(int i=0;i<cajas.size();i++){
-        if(x-rad>=cajas[i].getx()+cajas[i].getancho()-3 &&  x-rad<= cajas[i].getx()+cajas[i].getancho()+3 &&(y+rad >= cajas[i].gety() && y-rad <= cajas[i].gety()+cajas[i].getalto())){
+        if(x-rad>=cajas[i].getx()+cajas[i].getancho()-3 &&  x-rad<= cajas[i].getx()+cajas[i].getancho()+3 &&(y+rad >= cajas[i].gety() && y-rad <= cajas[i].gety()+cajas[i].getalto()) || dentrocaja(cajas[i])){
             if(dentrocaja(cajas[i]))x=cajas[i].getx()+cajas[i].getancho()+rad;
             cajas[i].dañar(calculardaño());
             return true;
@@ -243,7 +246,7 @@ bool Pelota::colisionarcajader2(QVector<cajas_p>& cajas){
 
 bool Pelota::colisionarcajaiz2(QVector<cajas_p>& cajas){
     for(int i=0;i<cajas.size();i++){
-        if(x + rad >= cajas[i].getx()-3 && x + rad <= cajas[i].getx() +3 && (y+rad >= cajas[i].gety() && y-rad <= cajas[i].gety()+cajas[i].getalto())){
+        if(x + rad >= cajas[i].getx()-3 && x + rad <= cajas[i].getx() +3 && (y+rad >= cajas[i].gety() && y-rad <= cajas[i].gety()+cajas[i].getalto()) || dentrocaja(cajas[i])){
             if(dentrocaja(cajas[i])) x=cajas[i].getx()-rad;
             cajas[i].dañar(calculardaño());
             return true;
@@ -254,7 +257,7 @@ bool Pelota::colisionarcajaiz2(QVector<cajas_p>& cajas){
 
 bool Pelota::colisionarcajaup2(QVector<cajas_p>& cajas){
     for(int i=0;i<cajas.size();i++){
-        if(y - rad >= cajas[i].gety() + cajas[i].getalto() -3 &&  y - rad <= cajas[i].gety() + cajas[i].getalto() + 3 &&(x+rad >= cajas[i].getx() && x-rad <= cajas[i].getx()+cajas[i].getancho())){
+        if(y - rad >= cajas[i].gety() + cajas[i].getalto() -3 &&  y - rad <= cajas[i].gety() + cajas[i].getalto() + 3 &&(x+rad >= cajas[i].getx() && x-rad <= cajas[i].getx()+cajas[i].getancho()) || dentrocaja(cajas[i])){
             if(dentrocaja(cajas[i]))y=cajas[i].gety()+cajas[i].getalto()+rad;
             cajas[i].dañar(calculardaño());
             return true;
@@ -265,8 +268,7 @@ bool Pelota::colisionarcajaup2(QVector<cajas_p>& cajas){
 
 bool Pelota::colisionarcajadw2(QVector<cajas_p>& cajas){
     for(int i=0;i<cajas.size();i++){
-        if(y + rad >= cajas[i].gety() -3 && y + rad <= cajas[i].gety() + 3 && (x+rad >= cajas[i].getx() && x-rad <= cajas[i].getx()+cajas[i].getancho())){
-            if(dentrocaja(cajas[i]))y=cajas[i].gety()-rad;
+        if(y + rad >= cajas[i].gety() -3 && y + rad <= cajas[i].gety() + 3 && (x+rad >= cajas[i].getx() && x-rad <= cajas[i].getx()+cajas[i].getancho()) || dentrocaja(cajas[i])){
             cajas[i].dañar(calculardaño());
             return true;
         }

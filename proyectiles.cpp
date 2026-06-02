@@ -6,18 +6,24 @@ proyectiles::proyectiles(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::proyectiles)
 {
-    jug1=Jugador(100,200,20,20,1);
-    jug2=Jugador(500,200,20,20,2);
+    jug1=Jugador(120,450,20,20,1);
+    jug2=Jugador(620,450,20,20,2);
     potencia = 15;
     ui->setupUi(this);
     connect(ui->botonsalir,&QPushButton::clicked,this,&proyectiles::botonvolver);
-    timer = new QTimer(this);  // ← falta esto
+    timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &proyectiles::onTimer);
     timer->start(16);
     pelota=Pelota(30,100,0,0,10,10);
-    agregarcaja(50,300,50,50,100);
+    agregarcaja(100,400,100,20,100);
+    agregarcaja(150,400,100,20,100);
+    agregarcaja(100,380,20,70,200);
+    agregarcaja(600,400,100,20,100);
+    agregarcaja(650,400,100,20,100);
+    agregarcaja(600,380,20,70,200);
     jugada=false;
-    jugador=true;
+    jugador=false;
+    ganador=0;
 }
 
 void proyectiles::mousePressEvent(QMouseEvent* event){
@@ -45,7 +51,7 @@ void proyectiles::onTimer(){
             jugador=false;
         }
         else {
-            pelota.setpos(300,100);
+            pelota.setpos(700,100);
             pelota.revivir();
             jugador=true;
         }
@@ -88,14 +94,14 @@ void proyectiles::paintEvent(QPaintEvent* event){
         painter.setPen(Qt::white);
         painter.setFont(QFont("Arial", 12, QFont::Bold));
         painter.drawText(cajas[i].getx(), cajas[i].gety(), cajas[i].getancho(), cajas[i].getalto(),Qt::AlignCenter,QString::number(cajas[i].getVida()));
-        jug1.dibujar(painter);
-        jug2.dibujar(painter);
-        if(juego_terminado){
-            painter.setPen(Qt::black);
-            painter.setFont(QFont("Arial", 30, QFont::Bold));
-            painter.drawText(width()/2 - 100, height()/2, "Gana jugador " + QString::number(ganador));
         }
-}    
+    jug1.dibujar(painter);
+    jug2.dibujar(painter);
+    if(juego_terminado){
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Arial", 30, QFont::Bold));
+        painter.drawText(width()/2 - 100, height()/2, "Gana jugador " + QString::number(ganador));
+}
 }
 
 
